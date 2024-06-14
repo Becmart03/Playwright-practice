@@ -1,0 +1,6 @@
+.vscode
+*imagenes
+.pytest*
+*__pycache__
+*env
+*venv
