@@ -1,9 +1,9 @@
 import re
 import time
 from playwright.sync_api import Page, expect, Playwright, sync_playwright
-from funciones import funcionesGlobales
 
-class funcionesGlobales:
+
+class FuncionesGlobales:
 
     def __init__(self,page):
         self.page = page
@@ -83,3 +83,16 @@ class funcionesGlobales:
         t = self.page.locator(selector)
         expect(t).to_contain_text(texto)
         time.sleep(tiempo)
+
+    
+    def upload_file(self, selector, archivo, ruta, tiempo=5):
+        self.page.locator(selector).set_input_files(archivo)
+        time.sleep(tiempo)
+        self.page.screenshot(path=ruta)
+
+
+    def upload_file_remove(self, selector, tiempo=5):
+        """elimina el archivo de la carga que habiamos agregado anteriormente"""
+        self.page.locator(selector).set_input_files([])
+        time.sleep(tiempo)
+        
