@@ -35,39 +35,11 @@ def set_up(playwright: Playwright)->None:
 
 
     F.click_normal("//input[contains(@type,'text')]", tiempo)
-    F.texto("//input[contains(@type,'text')]", "standard_userrr",tiempo)
+    F.texto("//input[contains(@type,'text')]", "standard_user",tiempo)
     F.click_normal("//input[contains(@type,'password')]", tiempo)
     F.texto("//input[contains(@type,'password')]", "secret_sauce")
     F.click_normal("//input[contains(@type,'submit')]", tiempo)
-    F.Espera(5)
-    yield page
-    context.tracing.stop(path='trace.zip')
-
-    context.close() 
-    browser.close()
-
-@pytest.fixture(scope="session")
-def set_up_session_2(playwright: Playwright)->None:
-    browser = playwright.chromium.launch(headless = False, slow_mo = tiempo)
-    context = browser.new_context(
-        viewport={"width":1500, "height":800}
-    )
-    context.tracing.start(screenshots=True, snapshots=True, sources=True)
-    page = context.new_page()
-    page.goto(url)
-    page.set_default_timeout(5000)
-
-    F = FuncionesGlobales(page)
-    F.validar_titulo_pagina('Swag Labs')
-    F.scroll_xy(0,400)
-    
-
-
-    F.click_normal("//input[contains(@type,'text')]", tiempo)
-    F.texto("//input[contains(@type,'text')]", "standard_userrr",tiempo)
-    F.click_normal("//input[contains(@type,'password')]", tiempo)
-    F.texto("//input[contains(@type,'password')]", "secret_sauce")
-    F.click_normal("//input[contains(@type,'submit')]", tiempo)
+    F.click_normal("//input[@type='submit']", tiempo)
     F.Espera(5)
     yield page
     context.tracing.stop(path='trace.zip')

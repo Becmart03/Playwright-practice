@@ -18,8 +18,8 @@ def test_sesion1(set_up)->None:
     F.validar_titulo_pagina("Swag Labs", tiempo)
 
     
-def test_sesion2(set_up)->None:
-    page = set_up
+def test_sesion2(set_up_session_2)->None:
+    page = set_up_session_2
     F  = FuncionesGlobales(page)
     F.click_normal("(//button[contains(.,'ADD TO CART')])[1]", tiempo)
     F.Espera(2)
