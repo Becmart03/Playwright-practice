@@ -47,6 +47,13 @@ class FuncionesGlobales:
         self.page.screenshot(path=img)
         time.sleep(tiempo)
 
+    def click_normal(self, selector, tiempo=5):
+        """para validar checkbox"""
+        t = self.page.locator(selector)
+        expect(t).to_be_visible
+        expect(t).to_be_enabled
+        time.sleep(tiempo)
+
 
     def combo_value(self, selector, valor,img, tiempo=5):
         t = self.page.locator(selector)
